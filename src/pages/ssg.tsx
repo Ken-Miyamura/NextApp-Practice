@@ -26,11 +26,10 @@ const Ssg: NextPage<SsgProps> = (props: SsgProps) => {
 };
 
 // getStaticPropsはビルド時に実行される
-export const getStaticProps: GetStaticProps<SsgProps> = async (context) => {
-  const timestamp = new Date();
+export const getStaticProps: GetStaticProps<SsgProps> = async () => {
+  const timestamp = new Date().toLocaleString();
   const message = `${timestamp}にgetStaticPropsが実行されました`;
   console.log(message);
-  console.log(context);
   return {
     props: {
       message,
