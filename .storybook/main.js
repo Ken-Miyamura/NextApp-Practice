@@ -1,4 +1,5 @@
 const path = require('path');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
   typescript: { reactDocgen: false },
@@ -8,21 +9,18 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
   ],
+  staticDirs: ['public'],
   framework: '@storybook/react',
   core: {
     builder: '@storybook/builder-webpack5',
   },
   webpackFinal: async (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@/styles': path.resolve(__dirname, '../src/styles'),
-    };
+    config.resolve.plugins = [
+      new TsconfigPathsPlugin({
+        configFile: path.resolve(__dirname, '../tsconfig,json'),
+      }),
+    ];
 
-    return {
-      ...config,
-      resolve: {
-        ...config.resolve,
-      },
-    };
+    return config;
   },
 };
