@@ -1,4 +1,4 @@
-import { ApiContext, User } from '@/pages/types/data';
+import { ApiContext, User } from '@/types/data';
 import { fetcher } from '@/utils';
 
 export type GetUserParams = {
