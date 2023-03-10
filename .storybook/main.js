@@ -17,7 +17,7 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.plugins = [
       new TsconfigPathsPlugin({
-        configFile: path.resolve(__dirname, '../tsconfig,json'),
+        configFile: path.resolve(__dirname, '../tsconfig.json'),
       }),
     ];
 
